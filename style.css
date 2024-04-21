@@ -3,14 +3,15 @@ html {
             radial-gradient(circle at -20% -30%, rgba(0, 0, 0, 0) 80%, #ebaf00 85%, rgba(0, 0, 0, 0) 90%) fixed,
             linear-gradient(60deg, rgba(20,20,20,0), rgba(20,20,20,1), rgba(20,20,20,0)) fixed,
             black;
-    height: 100vh;
-    width: 100vw;
+    height: 100%;
+    width: 100%;
     display: grid;
     box-sizing: border-box;
 }
 
 body {
-    width: 40em;
+    max-width: 40em;
+    width: 100%;
     background-color: rgba(30, 30, 30, 0.5);
     backdrop-filter: blur(0.5em);
     border-radius: 0.5em;
@@ -32,16 +33,16 @@ header, footer {
     text-align: center;
 }
 
-h1, footer p {
+h1, h3, footer p {
     margin: 0;
     padding: 0;
 }
 
 main {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-auto-flow: column;
-    grid-gap: 1em;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 1em;
     padding: 1em;
     margin: 0;
     box-sizing: border-box;
@@ -51,8 +52,9 @@ main {
 section {
     display: block;
     box-sizing: border-box;
+    flex-basis: 18em;
+    flex-grow: 1;
     align-self: center;
-    min-width: 0;
 }
 
 form {
@@ -146,11 +148,6 @@ form p {
 
 #infobox, #pin-container, #token-container {
     text-align: center;
-}
-
-h3 {
-    margin: 0;
-    padding: 0;
 }
 
 #pin {
