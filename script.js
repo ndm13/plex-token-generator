@@ -15,9 +15,9 @@ function fetchPlexPin(product, clientId) {
 
 function fetchPlexAuthToken(clientId, pin) {
     let data2 = new URLSearchParams();
-    data2.append("code", pin);
+    data2.append("code", pin.code);
     data2.append("X-Plex-Client-Identifier", clientId);
-    return fetch("https://plex.tv/api/v2/pins/" + j.id + "?" + data2.toString(), {
+    return fetch("https://plex.tv/api/v2/pins/" + pin.id + "?" + data2.toString(), {
         headers: {
             "Accept": "application/json"
         }
@@ -35,6 +35,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Handle generation
     let checkForPin = null;
+    const infobox = document.getElementById("infobox");
     const pinContainer = document.getElementById("pin-container");
     const tokenContainer = document.getElementById("token-container");
     const generateButton = document.getElementById("generate");
@@ -44,6 +45,7 @@ document.addEventListener('DOMContentLoaded', () => {
         window.clearInterval(checkForPin);
         pinContainer.style.display = "none";
         tokenContainer.style.display = "none";
+        infobox.style.display = "block";
         cancelButton.style.display = "none";
         generateButton.innerText = "Generate PIN";
     };
@@ -67,6 +69,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 // Display PIN
                 document.getElementById("pin").innerText = pin.code;
+                infobox.style.display = "none";
+                tokenContainer.style.display = "none";
                 pinContainer.style.display = "block";
 
                 // Update link to include PIN
@@ -76,7 +80,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 cancelButton.style.display = "block";
 
                 checkForPin = window.setInterval(() => {
-                    fetchPlexAuthToken(clientId, pin.code)
+                    fetchPlexAuthToken(clientId, pin)
                         .then(token => {
                             // If we're going to expire before the next pull, make the user generate again
                             if (token.expiresIn < 5) {
