@@ -1,6 +1,8 @@
 # plex-token-generator
 Lightweight authentication token generator for Plex API access
 
+Available live on [GitHub Pages](https://ndm13.github.io/plex-token-generator/)
+
 ## What is this?
 
 Plex allows users to integrate with its services through an API. Typically this is done by creating some
