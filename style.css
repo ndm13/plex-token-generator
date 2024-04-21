@@ -121,11 +121,22 @@ form p {
     font-size: smaller;
 }
 
-#generate {
+.buttons {
     grid-column: span 4;
     grid-row: auto;
     margin: 0.5em;
+    display: flex;
+    flex-direction: row;
+    gap: 1em;
+}
+
+.buttons > button {
+    flex-grow: 1;
     font-size: 1.5em;
+}
+
+#cancel {
+    display: none;
 }
 
 #pin-container, #token-container {

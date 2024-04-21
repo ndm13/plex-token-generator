@@ -35,7 +35,20 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Handle generation
     let checkForPin = null;
-    document.getElementById("generate").onclick = () => {
+    const pinContainer = document.getElementById("pin-container");
+    const tokenContainer = document.getElementById("token-container");
+    const generateButton = document.getElementById("generate");
+    const cancelButton = document.getElementById("cancel");
+
+    cancelButton.onclick = () => {
+        window.clearInterval(checkForPin);
+        pinContainer.style.display = "none";
+        tokenContainer.style.display = "none";
+        cancelButton.style.display = "none";
+        generateButton.innerText = "Generate PIN";
+    };
+
+    generateButton.onclick = () => {
         // Refresh check if clicked again
         if (checkForPin !== null)
             window.clearInterval(checkForPin);
@@ -46,13 +59,18 @@ document.addEventListener('DOMContentLoaded', () => {
 
         fetchPlexPin(product, clientId)
             .then(pin => {
+                // Clarify reclick intent
+                generateButton.innerText = "New PIN";
+
                 // Set QR code
-                const pinContainer = document.getElementById("pin-container");
                 pinContainer.querySelector("img").setAttribute('src', pin.qr);
 
                 // Display PIN
                 document.getElementById("pin").innerText = pin.code;
                 pinContainer.style.display = "block";
+
+                // Display Cancel
+                cancelButton.style.display = "block";
 
                 checkForPin = window.setInterval(() => {
                     fetchPlexAuthToken(clientId, pin.code)
@@ -67,11 +85,12 @@ document.addEventListener('DOMContentLoaded', () => {
                             if (!token.authToken) return;
 
                             pinContainer.style.display = "none";
+                            cancelButton.style.display = "none";
                             document.getElementById("plex-token").innerText = token.authToken;
-                            document.getElementById("token-container").style.display = "block";
+                            tokenContainer.style.display = "block";
                             window.clearInterval(checkForPin);
                         })
                 }, 5000);
             });
-    }
+    };
 })
