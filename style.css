@@ -1,0 +1,161 @@
+html {
+    background:
+            radial-gradient(circle at -20% -30%, rgba(0, 0, 0, 0) 80%, #ebaf00 85%, rgba(0, 0, 0, 0) 90%) fixed,
+            linear-gradient(60deg, rgba(20,20,20,0), rgba(20,20,20,1), rgba(20,20,20,0)) fixed,
+            black;
+    height: 100vh;
+    width: 100vw;
+    display: grid;
+    box-sizing: border-box;
+}
+
+body {
+    width: 40em;
+    background-color: rgba(30, 30, 30, 0.5);
+    backdrop-filter: blur(0.5em);
+    border-radius: 0.5em;
+    box-shadow: rgba(20, 20, 20, 0.25) 0 0 0.5em;
+    margin: auto;
+    font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif;
+    color: #eee;
+    box-sizing: border-box;
+    align-self: center;
+}
+
+header, footer {
+    padding: 0.5em;
+    margin: 0;
+}
+
+h1, footer p {
+    margin: 0;
+    padding: 0;
+}
+
+main {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-auto-flow: column;
+    grid-gap: 0.5em;
+    padding: 0.5em;
+    margin: 0;
+    box-sizing: border-box;
+    width: 100%;
+}
+
+section {
+    display: block;
+    box-sizing: border-box;
+    align-self: center;
+    min-width: 0;
+}
+
+form {
+    display: grid;
+    grid-template-columns: [labels] auto [inputs] 1fr [info] auto [shuffle] auto;
+    grid-auto-flow: row;
+    grid-gap: 0.5em;
+}
+
+label {
+    grid-column: labels;
+    grid-row: auto;
+    white-space: nowrap;
+    align-self: self-end;
+    padding: 0.5em 0;
+}
+
+input {
+    grid-column: inputs;
+    grid-row: auto;
+    min-width: 0;
+    border: none;
+    background-color: rgba(20, 20, 20, 0.7);
+    color: #eee;
+    font-size: 1em;
+    padding: 0.5em;
+}
+
+input:focus {
+    border: none;
+    outline: none;
+    box-shadow: inset #ebaf00 0 0 0.25em;
+}
+
+button {
+    border: none;
+    border-radius: 0.5em;
+    padding: 0.5em;
+    background-color: rgba(0, 0, 0, 0.7);
+    color: #eee;
+    transition: background-color 0.25s;
+}
+
+button:hover {
+    background-color: rgba(20, 20, 20, 0.9);
+}
+
+button:active {
+    background-color: #ebaf00;
+}
+
+a {
+    color: #ebaf00;
+    text-decoration: none;
+}
+
+[aria-label=Info] {
+    grid-column: info;
+    grid-row: auto;
+    align-self: center;
+}
+
+#random-id {
+    grid-column: shuffle;
+    grid-row: auto;
+}
+
+form p {
+    grid-column: span 4;
+    grid-row: auto;
+    font-size: smaller;
+}
+
+#generate {
+    grid-column: span 4;
+    grid-row: auto;
+    margin: 0.5em;
+    font-size: 1.5em;
+}
+
+#pin-container, #token-container {
+    display: none;
+    text-align: center;
+}
+
+h3 {
+    margin: 0;
+    padding: 0;
+}
+
+#pin {
+    font-size: 4em;
+    letter-spacing: 0.5em;
+    display: block;
+    margin: 0 -0.5em 0 0;
+    padding: 0.25em 0;
+}
+
+#plex-token {
+    font-size: 2em;
+    margin: 0;
+    padding: 0.5em 0;
+}
+
+img {
+    max-height: 8em;
+    margin: auto auto 0.5em auto;
+    display: block;
+    padding: 0.5em;
+    background-color: rgba(0, 0, 0, 0.5);
+}
