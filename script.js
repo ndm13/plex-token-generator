@@ -69,6 +69,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 document.getElementById("pin").innerText = pin.code;
                 pinContainer.style.display = "block";
 
+                // Update link to include PIN
+                pinContainer.querySelector("a").setAttribute("href", `https://plex.tv/link?pin=${pin.code}`);
+
                 // Display Cancel
                 cancelButton.style.display = "block";
 
