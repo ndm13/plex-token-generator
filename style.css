@@ -22,9 +22,14 @@ body {
     align-self: center;
 }
 
+ion-icon {
+    font-size: 1.2em;
+}
+
 header, footer {
     padding: 0.5em;
     margin: 0;
+    text-align: center;
 }
 
 h1, footer p {
@@ -36,8 +41,8 @@ main {
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-auto-flow: column;
-    grid-gap: 0.5em;
-    padding: 0.5em;
+    grid-gap: 1em;
+    padding: 1em;
     margin: 0;
     box-sizing: border-box;
     width: 100%;
@@ -135,12 +140,11 @@ form p {
     font-size: 1.5em;
 }
 
-#cancel {
+#pin-container, #token-container, #cancel {
     display: none;
 }
 
-#pin-container, #token-container {
-    display: none;
+#infobox, #pin-container, #token-container {
     text-align: center;
 }
 
